@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <script type="module" src="hook.js"></script>
+  <style type="text/css" data-vite-dev-id="/react-vite-app/css/style.css">
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+    body {
+      font-family: 'Roboto', sans-serif, "Arial", "Verdana", sans-serif;
+      background-color: #fff;
+      font-size: 14px;
+      color: #000;
+    }
+
+    h1 {
+      color: #1d89bb;
+    }
+
+    input {
+      font-size: 12px;
+    }
+
+    .titulo {
+      font-weight: bold;
+    }
+
+    .numero {
+      width: 50px;
+    }
+
+    .table td {
+      padding: 5px !important;
+      vertical-align: middle;
+    }
+
+    .table th {
+      text-align: center;
+      font-size: 18px;
+      background: #1d89bb;
+      color: #FFF;
+    }
+
+    .div1 {
+      color: #FFF;
+      background-color: #013241;
+    }
+
+    .div2 {
+      border-width: 1px;
+    }
+
+    .formula {
+      font-size: 13px;
+    }
+
+    #criticidade {
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <script type="module">
+      import RefreshRuntime from "/@react-refresh"
+      RefreshRuntime.injectIntoGlobalHook(window)
+      window.$RefreshReg$ = () => { }
+      window.$RefreshSig$ = () => (type) => type
+      window.__vite_plugin_react_preamble_installed__ = true
+    </script>
+
+    <script type="module" src="client"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script type="text/javascript" charset="UTF-8" src="jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="bootstrap.bundle.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="functions.js"></script>
+  </header>
+
+  <div id="root"></div>
+  <script type="module" src="fmea.dev.paytvlabs.com.br_files/main.tsx"></script>
+  <div class="container-fluid">
+    <div class="row div2">
+      <div class="col-md-2">
+        <img src="logo.png" width="200px" style="margin: 10px">
+      </div>
+      <div class="col-md-10">
+        <h1 style="padding-top: 20px;">FMEA</h1>
+      </div>
+    </div>
+    <hr width="#">
+    <!--MENU DE EXPLICAÇÃO PARA OPÇÕES-->
+    <div class="p-4">
+      <label for="descricao">Descrição:</label><br>
+      <input type="text" name="descrição" id="description" />
+      <button onclick="addDescription()">Adicionar</button>
+    </div>
+    <div class="row div4">
+      <!--PAINEL REPRODUCIBILIDADE-->
+      <div class="col-md-3">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <th colspan="5">Chamados</th>
+            </tr>
+            <tr>
+              <td>Chamados</td>
+              <td><input style="font-size:large;" type="text" class="numero" id="reproducibility"
+                  onkeyup="validadeDado(this, this.value); calcularFmea();" placeholder="0"></td>
+            </tr>
+            <tr>
+              <td>Raro</td>
+              <td>1</td>
+              <td>Reproduzido apenas uma vez</td>
+            </tr>
+            <tr>
+              <td>Baixa</td>
+              <td>2</td>
+              <td>Menos de 30% do tempo</td>
+            </tr>
+            <tr>
+              <td>Às vezes</td>
+              <td>3</td>
+              <td>Mais de 30% e menos de 70% do tempo</td>
+            </tr>
+            <tr>
+              <td>Frequentemente</td>
+              <td>4</td>
+              <td>Mais de 70% do tempo</td>
+            </tr>
+            <tr>
+              <td>Sempre</td>
+              <td>5</td>
+              <td>100%</td>
+            </tr>
+          </tbody>
+        </table>
+        <tl>Percentual de falha de reprodutibilidade - 5 níveis</tl>
+      </div>
+      <!--PAINEL SEVERIDADE-->
+      <div class="col-md-3">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <th colspan="3">Severidade</th>
+            </tr>
+            <tr>
+              <td>Severidade:</td>
+              <td><input style="font-size:large;" type="text" class="numero" id="severity"
+                  onkeyup="validadeDado(this, this.value); calcularFmea();" placeholder="0"></td>
+            </tr>
+            <tr>
+              <td>Muito baixa</td>
+              <td>1</td>
+              <td>Imperceptível para a maioria dos clientes</td>
+            </tr>
+
+            <tr>
+              <td>Baixa</td>
+              <td>2</td>
+              <td>Perceptível para o cliente, mas a funcionalidade não é afetada</td>
+            </tr>
+            <tr>
+              <td>Moderada</td>
+              <td>3</td>
+              <td>Solução alternativa simples</td>
+            </tr>
+
+            <tr>
+              <td>Alta</td>
+              <td>4</td>
+              <td>Solução complexa</td>
+            </tr>
+
+            <tr>
+              <td>Muito alta</td>
+              <td>5</td>
+              <td>O cliente não consegue usar o serviço</td>
+            </tr>
+          </tbody>
+        </table>
+        <tl>Relacionado à percepção do problema pelo cliente - 5 níveis</tl>
+      </div>
+      <!--PAINEL IMPACTO-->
+      <div class="col-md-3">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <th colspan="3">Impacto</th>
+            </tr>
+            <tr>
+              <td>Impacto:</td>
+              <td><input style="font-size:large;" type="text" class="numero" id="impact"
+                  onkeyup="validadeDado(this, this.value); calcularFmea();" placeholder="0"></td>
+            </tr>
+            <tr>
+              <td>Mínimo</td>
+              <td>1</td>
+              <td>Problemas estéticos - texto e questões de interface que não afetam o uso</td>
+            </tr>
+            <tr>
+              <td>Baixo</td>
+              <td>2</td>
+              <td>Problemas com duração inferior a 2 segundos - recuperação sem intervenção</td>
+            </tr>
+            <tr>
+              <td>Moderado</td>
+              <td>3</td>
+              <td>Impacto na funcionalidade com duração inferior a 10 segundos - recuperação sem intervenção</td>
+            </tr>
+            <tr>
+              <td>Alto</td>
+              <td>4</td>
+              <td>Impacto na funcionalidade com duração superior a 10 segundos - sem recuperação sem intervenção do
+                cliente</td>
+            </tr>
+            <tr>
+              <td>Crítico</td>
+              <td>5</td>
+              <td>Perda de funcionalidade</td>
+            </tr>
+            <tr>
+              <td>Máximo</td>
+              <td>6</td>
+              <td>Perda financeira ou problemas de atualização</td>
+            </tr>
+          </tbody>
+        </table>
+        <tl>Relacionado ao impacto na perda de funcionalidade - 6 níveis</tl>
+      </div>
+      <!--PAINEL GRUPO DE FUNCIONALIDADE-->
+      <div class="col-md-3">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <th colspan="3">Grupo de Funcionalidade</th>
+            </tr>
+            <tr>
+              <td>Grupo de Funcionalidade:</td>
+              <td><input style="font-size:large;" type="text" class="numero" id="group"
+                  onkeyup="validadeDado(this, this.value); calcularFmea();" placeholder="0"></td>
+            </tr>
+            <tr>
+              <td>Principal</td>
+              <td>5</td>
+              <td>QClass</td>
+            </tr>
+
+            <tr>
+              <td>Secundário</td>
+              <td>5</td>
+              <td>Qdrive</td>
+            </tr>
+
+            <tr>
+              <td>Terciário</td>
+              <td>3</td>
+              <td>Outros</td>
+            </tr>
+
+            <tr>
+              <td>Outros 1</td>
+              <td>2</td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <td>Outros 2</td>
+              <td>1</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <tl>Grupo de Funcionalidade: Peso da funcionalidade relacionado ao uso - 5 grupos</tl>
+      </div>
+    </div>
+    <!-- <table id="evidencias" class="table table-bordered">
+      <tbody>
+        <tr>
+          <th colspan="2">Evidências</th>
+        </tr>
+      </tbody>
+    </table> -->
+    <!-- <div>
+      <label for="evidencia">Evidência:</label><br>
+      <input type="text" name="evidencia" id="evidencia" />
+      <button onclick="addEvidencia()">Adicionar</button>
+    </div> -->
+
+    <div class="row div2">
+
+
+      <hr width="#">
+      <!--EXPLICAÇÃO E FUNCIONAMENTO DA FERRAMENTA -->
+      <div class="row div2">
+        <!--PAINEL RESULTADOS-->
+        <div class="col-md-3">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th>Criticality</th>
+                <td><input style="font-size:x-large;" type="text" id="criticity" disabled="disabled" value="0%"
+                    width="20"></td>
+              </tr>
+              <tr style="background:#94ff7a;">
+                <td>0% - 20%</td>
+                <td>Trivial</td>
+              </tr>
+
+              <tr style="background:#fffa00;">
+                <td>20% - 40%</td>
+                <td>Minor</td>
+              </tr>
+
+              <tr style="background:#ff9900;">
+                <td>40% - 60%</td>
+                <td>Major</td>
+              </tr>
+
+              <tr style="background:#ff0000; color:#FFF">
+                <td>60% - 80%</td>
+                <td>Critical</td>
+              </tr>
+
+              <tr style="background:#000; color:#FFF">
+                <td>80% - 100%</td>
+                <td>Blocker</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script>
+      let nEvidencia = 0
+      //function that adds a creates a new evidencia element to the table
+      function addEvidencia() {
+        //gets the value of the input
+        var evidencia = document.getElementById("evidencia").value;
+        //checks if the input is empty
+        if (evidencia == "") {
+          alert("Por favor, preencha o campo com o link da evidência.");
+        } else {
+          //creates the new element
+          var newEvidencia = document.createElement("a");
+          //sets the link of the element
+          newEvidencia.setAttribute("href", evidencia);
+          //sets the text of the element
+          newEvidencia.innerHTML = evidencia;
+          //gets the table
+          var table = document.getElementById("evidencias");
+          //creates a new row
+          var row = table.insertRow(0);
+          //creates a new cell
+          var cell = row.insertCell(0);
+          //adds the element to the cell
+          cell.appendChild(newEvidencia);
+          //add evidencia to url
+          var url = window.location.href;
+          url = url + `?evidencia${nEvidencia}=` + evidencia;
+          window.history.pushState("", "", url);
+          nEvidencia++
+        }
+
+        document.getElementById("evidencia").value = "";
+      }
+
+      function addDescription() {
+        //gets the value of the input
+        var description = document.getElementById("description").value;
+        //checks if the input is empty
+        if (evidencia == "") {
+          alert("Por favor, preencha o campo com a descrição.");
+        } else {
+          //creates the new element
+
+          //sets the link of the element
+
+          //sets the text of the element
+
+          //gets the table
+
+          //creates a new row
+
+          //creates a new cell
+
+          //adds the element to the cell
+
+          //add evidencia to url
+          var url = window.location.href;
+          url = url + `?description=` + description;
+          window.history.pushState("", "", url);
+
+        }
+
+        document.getElementById("evidencia").value = "";
+      }
+
+
+    </script>
+</body>
+
+
+</html>

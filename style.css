@@ -1,0 +1,7 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/css/style.css");import { updateStyle as __vite__updateStyle, removeStyle as __vite__removeStyle } from "/@vite/client"
+const __vite__id = "/react-vite-app/css/style.css"
+const __vite__css = "@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');\n\nbody{\n    font-family: 'Roboto', sans-serif, \"Arial\", \"Verdana\", sans-serif;\n    background-color: #fff;\n    font-size: 14px;\n    color: #000;\n}\n\nh1 {\n    color: #660099;\n}\n\ninput{\n    font-size: 12px;\n}\n\n.titulo{\n    #font-weight:bold;\n}\n\n.numero{\n    width: 50px;\n}\n\n.table td{\n    padding: 5px !important;\n    vertical-align: middle;\n}\n\n.table th{\n    text-align: center;\n    font-size:18px;\n    background: #660099;\n    color: #FFF;\n}\n\n.div1{\n    color: #FFF;\n    background-color: #013241;\n}\n\n.div2{\n    border-width:1px;\n}\n\n.formula{\n    font-size:13px;\n}\n\n#criticidade{\n    font-weight:bold;\n}"
+__vite__updateStyle(__vite__id, __vite__css)
+import.meta.hot.accept()
+export default __vite__css
+import.meta.hot.prune(() => __vite__removeStyle(__vite__id))
