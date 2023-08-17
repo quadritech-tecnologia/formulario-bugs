@@ -6,20 +6,17 @@ $(document).ready(function () {
     impact = parametros.split("&")[2];
     group = parametros.split("&")[3];
     criticity = parametros.split("&")[4];
-    description = parametros.split("&")[5];
 
     value_repro = reproducibility.split("=")[1];
     value_severity = severity.split("=")[1];
     value_impact = impact.split("=")[1];
     value_group = group.split("=")[1];
     value_criticity = criticity.split("=")[1];
-    value_description = description.split("=")[1];
 
     $("#reproducibility").val(value_repro);
     $("#severity").val(value_severity);
     $("#impact").val(value_impact);
     $("#group").val(value_group);
-    $("#description").val(value_description);
 
     var cor = "#545454";
     var cor_fonte = "#000";
@@ -73,12 +70,6 @@ function calcularFmea() {
     var group = $("#group").val();
   }
 
-  if ($("#description").val() == "") {
-    $("#description").val("Descrição do problema");
-  } else {
-    var description = $("#description").val();
-  }
-
   if (reproducibility != "" && severity != "" && impact != "" && group != "") {
     var criticity = ((reproducibility * 3 + severity * 4 + impact * 6 + group * 3 - 16) / 70) * 100;
 
@@ -110,7 +101,6 @@ function calcularFmea() {
     $("#criticity").css("background", cor);
     $("#criticity").css("color", cor_fonte);
     $("#criticity").val(nivel);
-    $("#description").val(description);
 
     gerarUrl();
   }
@@ -123,8 +113,6 @@ function gerarUrl() {
   var impact = $("#impact").val();
   var group = $("#group").val();
   var criticity = $("#criticity").val();
-  var description = $("#description").val();
-  console.log(description);
 
   url =
     url +
@@ -138,8 +126,6 @@ function gerarUrl() {
     group +
     "&criticity=" +
     criticity;
-  +"&description=" + description;
-
   window.location.href = url;
 }
 

@@ -84,7 +84,7 @@
   </header>
 
   <div id="root"></div>
-  <script type="module" src="fmea.dev.paytvlabs.com.br_files/main.tsx"></script>
+
   <div class="container-fluid">
     <div class="row div2">
       <div class="col-md-2">
@@ -96,11 +96,6 @@
     </div>
     <hr width="#">
     <!--MENU DE EXPLICAÇÃO PARA OPÇÕES-->
-    <div class="p-4">
-      <label for="descricao">Descrição:</label><br>
-      <input type="text" name="descrição" id="description" />
-      <button onclick="addDescription()">Adicionar</button>
-    </div>
     <div class="row div4">
       <!--PAINEL REPRODUCIBILIDADE-->
       <div class="col-md-3">
@@ -160,7 +155,6 @@
               <td>1</td>
               <td>Imperceptível para a maioria dos clientes</td>
             </tr>
-
             <tr>
               <td>Baixa</td>
               <td>2</td>
@@ -171,13 +165,11 @@
               <td>3</td>
               <td>Solução alternativa simples</td>
             </tr>
-
             <tr>
               <td>Alta</td>
               <td>4</td>
               <td>Solução complexa</td>
             </tr>
-
             <tr>
               <td>Muito alta</td>
               <td>5</td>
@@ -249,31 +241,31 @@
             <tr>
               <td>Principal</td>
               <td>5</td>
-              <td>QClass</td>
+              <td>Envio de aula</td>
             </tr>
 
             <tr>
               <td>Secundário</td>
-              <td>5</td>
-              <td>Qdrive</td>
+              <td>4</td>
+              <td>Agendamento ou falha no login</td>
             </tr>
 
             <tr>
               <td>Terciário</td>
               <td>3</td>
-              <td>Outros</td>
+              <td>Falha no hardware</td>
             </tr>
 
             <tr>
-              <td>Outros 1</td>
+              <td>Quaternário</td>
               <td>2</td>
-              <td></td>
+              <td>Validação de foto</td>
             </tr>
 
             <tr>
-              <td>Outros 2</td>
+              <td>Quninternário</td>
               <td>1</td>
-              <td></td>
+              <td>Funcionalidades do aplicativo</td>
             </tr>
           </tbody>
         </table>
@@ -338,69 +330,8 @@
       </div>
     </div>
     <script>
-      let nEvidencia = 0
-      //function that adds a creates a new evidencia element to the table
-      function addEvidencia() {
-        //gets the value of the input
-        var evidencia = document.getElementById("evidencia").value;
-        //checks if the input is empty
-        if (evidencia == "") {
-          alert("Por favor, preencha o campo com o link da evidência.");
-        } else {
-          //creates the new element
-          var newEvidencia = document.createElement("a");
-          //sets the link of the element
-          newEvidencia.setAttribute("href", evidencia);
-          //sets the text of the element
-          newEvidencia.innerHTML = evidencia;
-          //gets the table
-          var table = document.getElementById("evidencias");
-          //creates a new row
-          var row = table.insertRow(0);
-          //creates a new cell
-          var cell = row.insertCell(0);
-          //adds the element to the cell
-          cell.appendChild(newEvidencia);
-          //add evidencia to url
-          var url = window.location.href;
-          url = url + `?evidencia${nEvidencia}=` + evidencia;
-          window.history.pushState("", "", url);
-          nEvidencia++
-        }
 
-        document.getElementById("evidencia").value = "";
-      }
 
-      function addDescription() {
-        //gets the value of the input
-        var description = document.getElementById("description").value;
-        //checks if the input is empty
-        if (evidencia == "") {
-          alert("Por favor, preencha o campo com a descrição.");
-        } else {
-          //creates the new element
-
-          //sets the link of the element
-
-          //sets the text of the element
-
-          //gets the table
-
-          //creates a new row
-
-          //creates a new cell
-
-          //adds the element to the cell
-
-          //add evidencia to url
-          var url = window.location.href;
-          url = url + `?description=` + description;
-          window.history.pushState("", "", url);
-
-        }
-
-        document.getElementById("evidencia").value = "";
-      }
 
 
     </script>
